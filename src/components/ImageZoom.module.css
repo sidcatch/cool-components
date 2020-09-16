@@ -1,0 +1,11 @@
+.container {
+  position: relative;
+  display: inline-block;
+  margin-right: 2rem;
+}
+.lens {
+  position: absolute;
+}
+.result {
+  display: inline-block;
+}
