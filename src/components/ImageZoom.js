@@ -5,10 +5,10 @@ import sceneryImg from "../images/beautiful-scenery.jpg";
 import imageZoomStyles from "./ImageZoom.module.css";
 let imageWidth = 466;
 let imageHeight = 368;
-let lensWidth = 100;
-let lensHeight = 100;
-let resultWidth = 368;
-let resultHeight = 368;
+let lensWidth = 200;
+let lensHeight = 200;
+let resultWidth = 400;
+let resultHeight = 400;
 
 function ImageZoom() {
   const imageRef = useRef(null);

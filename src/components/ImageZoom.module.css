@@ -2,10 +2,16 @@
   position: relative;
   display: inline-block;
   margin-right: 2rem;
+
+  vertical-align: top;
 }
 .lens {
   position: absolute;
+
+  /* border-radius: 50%; */
 }
 .result {
   display: inline-block;
+
+  /* border-radius: 50%; */
 }
