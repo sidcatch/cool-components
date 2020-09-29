@@ -35,6 +35,12 @@ function ImageCompare() {
 
       setOverlayWidth(overlayWidth);
     };
+    const slideFinish = (e) => {
+      e.preventDefault();
+
+      //setSliderState((p) => ({ ...p, sliderClicked: false }));
+      sliderClicked.current = false;
+    };
 
     window.addEventListener("mouseup", slideFinish);
     window.addEventListener("mousemove", slideMove);
@@ -49,12 +55,6 @@ function ImageCompare() {
 
     //setSliderState((p) => ({ ...p, sliderClicked: true }));
     sliderClicked.current = true;
-  };
-  const slideFinish = (e) => {
-    e.preventDefault();
-
-    //setSliderState((p) => ({ ...p, sliderClicked: false }));
-    sliderClicked.current = false;
   };
 
   function getCursorPos(e) {

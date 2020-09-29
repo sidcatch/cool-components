@@ -2,6 +2,7 @@ import React, { Fragment, useState } from "react";
 
 import ImageZoom from "./components/ImageZoom";
 import ImageCompare from "./components/ImageCompare";
+import ImageFlip from "./components/ImageFlip";
 
 import "./App.css";
 
@@ -23,6 +24,7 @@ function App() {
       {showImageComparer && <ImageCompare />}
 
       <p className="hey">Hey</p>
+      <ImageFlip />
     </Fragment>
   );
 }
