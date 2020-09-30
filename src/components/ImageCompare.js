@@ -3,16 +3,16 @@ import React, { Fragment, useRef, useState, useEffect } from "react";
 import cx from "classnames";
 import imageCompareStyles from "./ImageCompare.module.css";
 
-import forestImg from "../images/img_forest.jpg";
-import snowImg from "../images/img_snow.jpg";
-
-let imageWidth = 300;
-let imageHeight = 200;
-let sliderWidth = 40;
-let sliderHeight = sliderWidth;
-
 //let sliderClicked = false;
-function ImageCompare() {
+function ImageCompare({
+  image1,
+  image2,
+  imageWidth,
+  imageHeight,
+  sliderHeight,
+}) {
+  let sliderWidth = sliderHeight;
+
   const overlayRef = useRef(null);
 
   const sliderClicked = useRef(false);
@@ -48,7 +48,7 @@ function ImageCompare() {
       window.removeEventListener("mouseup", slideFinish);
       window.removeEventListener("mousemove", slideMove);
     };
-  }, []);
+  }, [imageWidth]);
 
   const slideReady = (e) => {
     e.preventDefault();
@@ -77,7 +77,7 @@ function ImageCompare() {
       >
         <div className={imageCompareStyles.image}>
           <img
-            src={snowImg}
+            src={image2}
             width={imageWidth}
             height={imageHeight}
             alt=""
@@ -99,7 +99,7 @@ function ImageCompare() {
           ref={overlayRef}
         >
           <img
-            src={forestImg}
+            src={image1}
             width={imageWidth}
             height={imageHeight}
             alt=""

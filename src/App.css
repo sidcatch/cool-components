@@ -6,7 +6,18 @@
 
 body {
   padding: 3rem;
+  background-color: rgb(254, 215, 255);
 }
 .hey {
   font-size: 5rem;
+}
+.mainHeading {
+  text-align: center;
+  text-decoration: underline;
+}
+.sectionHeading {
+  margin: 15px 0px;
+}
+.imageZoomContainer {
+  height: 457px;
 }

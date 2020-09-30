@@ -1,20 +1,23 @@
 import React, { Fragment, useRef, useState } from "react";
 
-import sceneryImg from "../images/beautiful-scenery.jpg";
+/* import sceneryImg from "../images/beautiful-scenery.jpg"; */
 
 import imageZoomStyles from "./ImageZoom.module.css";
-let imageWidth = 466;
-let imageHeight = 368;
-let lensWidth = 200;
-let lensHeight = 200;
-let resultWidth = 400;
-let resultHeight = 400;
 
-function ImageZoom() {
+function ImageZoom({
+  image,
+  imageWidth,
+  imageHeight,
+  lensWidth,
+  lensHeight,
+  resultWidth,
+  resultHeight,
+}) {
   const imageRef = useRef(null);
 
   const [lensPos, setLensPos] = useState({ lensPosX: 0, lensPosY: 0 });
   const { lensPosX, lensPosY } = lensPos;
+  const [showResult, setResult] = useState(false);
 
   let resultToLensWidthRatio = resultWidth / lensWidth;
   let resultToLensHeightRatio = resultHeight / lensHeight;
@@ -57,21 +60,31 @@ function ImageZoom() {
   };
   return (
     <Fragment>
-      <div className={imageZoomStyles.container}>
-        <div
-          className={imageZoomStyles.lens}
-          style={{
-            width: lensWidth,
-            height: lensHeight,
-            border: "1px solid #d4d4d4",
-            left: lensPosX,
-            top: lensPosY,
-          }}
-          onMouseMove={moveLens}
-        ></div>
+      <div
+        className={imageZoomStyles.container}
+        onMouseEnter={() => {
+          setResult(true);
+        }}
+        onMouseLeave={() => {
+          setResult(false);
+        }}
+      >
+        {showResult && (
+          <div
+            className={imageZoomStyles.lens}
+            style={{
+              width: lensWidth,
+              height: lensHeight,
+              border: "1px solid #d4d4d4",
+              left: lensPosX,
+              top: lensPosY,
+            }}
+            onMouseMove={moveLens}
+          ></div>
+        )}
         <img
           className={imageZoomStyles.image}
-          src={sceneryImg}
+          src={image}
           width={imageWidth}
           height={imageHeight}
           alt=""
@@ -79,20 +92,22 @@ function ImageZoom() {
           onMouseMove={moveLens}
         ></img>
       </div>
-      <div
-        className={imageZoomStyles.result}
-        style={{
-          width: resultWidth,
-          height: resultHeight,
-          backgroundImage: `url(${sceneryImg})`,
-          backgroundSize: `${imageWidth * resultToLensWidthRatio}px ${
-            imageHeight * resultToLensHeightRatio
-          }px`,
-          backgroundPosition: `-${lensPosX * resultToLensWidthRatio}px -${
-            lensPosY * resultToLensHeightRatio
-          }px`,
-        }}
-      ></div>
+      {showResult && (
+        <div
+          className={imageZoomStyles.result}
+          style={{
+            width: resultWidth,
+            height: resultHeight,
+            backgroundImage: `url(${image})`,
+            backgroundSize: `${imageWidth * resultToLensWidthRatio}px ${
+              imageHeight * resultToLensHeightRatio
+            }px`,
+            backgroundPosition: `-${lensPosX * resultToLensWidthRatio}px -${
+              lensPosY * resultToLensHeightRatio
+            }px`,
+          }}
+        ></div>
+      )}
     </Fragment>
   );
 }
