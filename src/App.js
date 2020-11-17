@@ -48,6 +48,8 @@ function App() {
         images={sliderImages}
         carouselWidth={450}
         carouselWidthUnit="px"
+        carouselHeight={282}
+        carouselHeightUnit="px"
       />
       <h2 className="sectionHeading">Image Flip</h2>
       <ImageFlip />
